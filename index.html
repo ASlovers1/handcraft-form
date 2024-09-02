@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="ta">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>மாணவர் கைதட்டும் (Handcrafted) திட்டத்தை சமர்ப்பிக்கும் படிவம்</title>
+    <style>
+        /* பொதுவான உடல் அமைப்பு */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        
+        /* படிவக் கொள்கலம் */
+        .form-container {
+            background-color: #fff;
+            padding: 20px 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            width: 100%;
+            max-height: 80vh; /* அதிகபட்ச உயரம் ஸ்க்ரோலுக்கு */
+            overflow-y: auto; /* செங்குத்து ஸ்க்ரோல் */
+        }
+
+        /* படிவ தலைப்பு */
+        h2 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        /* லேபிள் மற்றும் உள்ளீடு புலம் */
+        label {
+            font-weight: bold;
+            color: #555;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"], input[type="number"], input[type="email"], input[type="tel"],
+        input[type="date"], select, textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 14px;
+            box-sizing: border-box;
+        }
+
+        /* கோப்பு உள்ளீடு */
+        input[type="file"] {
+            margin-bottom: 15px;
+        }
+
+        /* சமர்ப்பிப்பு பொத்தானின் வடிவமைப்பு */
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            width: 100%;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        /* சிறிய திரைக்கான ஒத்திசைவு வடிவமைப்பு */
+        @media (max-width: 600px) {
+            .form-container {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h2>மாணவர் கைதட்டும் திட்டத்தை சமர்ப்பிக்கும் படிவம்</h2>
+        <form action="submit_form.php" method="POST" enctype="multipart/form-data">
+            <!-- மாணவர் தகவல் -->
+            <label for="name">முழு பெயர்:</label>
+            <input type="text" id="name" name="name" required>
+            
+            <label for="age">வயது:</label>
+            <input type="number" id="age" name="age" required>
+            
+            <label for="grade">தரம்/வகுப்பு:</label>
+            <select id="grade" name="grade">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+            </select>
+            
+            <!-- தொடர்பு தகவல் -->
+            <label for="email">மின்னஞ்சல் முகவரி:</label>
+            <input type="email" id="email" name="email" required>
+            
+            <label for="phone">தொலைபேசி எண்:</label>
+            <input type="tel" id="phone" name="phone" required>
+            
+            <!-- திட்ட விவரங்கள் -->
+            <label for="project_name">திட்டத்தின் பெயர்:</label>
+            <input type="text" id="project_name" name="project_name" required>
+            
+            <label for="handcraft_type">கைத்தறி வகை:</label>
+            <select id="handcraft_type" name="handcraft_type">
+                <option value="knitting">நெய்தல்</option>
+                <option value="woodwork">மர வேலை</option>
+            </select>
+            
+            <label for="description">திட்டத்தின் சுருக்க விளக்கம்:</label>
+            <textarea id="description" name="description" rows="4" required></textarea>
+            
+            <label for="materials">பயன்படுத்தப்பட்ட பொருட்கள்:</label>
+            <textarea id="materials" name="materials" rows="4" required></textarea>
+            
+            <!-- சமர்ப்பிப்பு விவரங்கள் -->
+            <label for="photos">திட்ட புகைப்படங்கள்:</label>
+            <input type="file" id="photos" name="photos" accept="image/*" required>
+            
+            <label for="completion_date">முடிவு தேதி:</label>
+            <input type="date" id="completion_date" name="completion_date" required>
+            
+            <!-- கூடுதல் தகவல் -->
+            <label for="challenges">எந்தவொரு சவால்கள்/கஷ்டங்கள்:</label>
+            <textarea id="challenges" name="challenges" rows="4"></textarea>
+            
+            <label for="feedback">கருத்துக்கள் / பின்னூட்டம்:</label>
+            <textarea id="feedback" name="feedback" rows="4"></textarea>
+            
+            <!-- ஒப்புதல் -->
+            <input type="checkbox" id="terms" name="terms" required>
+            <label for="terms">நிபந்தனைகளை ஏற்கிறேன்.</label><br>
+            
+            <input type="checkbox" id="permission" name="permission" required>
+            <label for="permission">என் திட்டத்தை பள்ளியின் இணையதளம் / சமூக ஊடகங்களில் பகிர அனுமதி தருகிறேன்.</label><br><br>
+            
+            <input type="submit" value="சமர்ப்பிக்கவும்">
+        </form>
+    </div>
+</body>
+</html>
